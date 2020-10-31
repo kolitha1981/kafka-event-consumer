@@ -1,6 +1,6 @@
-package org.sltb.userservice.service;
+package org.sltb.authservice.service;
 
-import org.sltb.userservice.domain.UserToken;
+import org.sltb.authservice.domain.UserToken;
 
 public interface AuthenticationService {
 

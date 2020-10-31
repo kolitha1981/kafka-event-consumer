@@ -1,4 +1,4 @@
-package org.sltb.userservice;
+package org.sltb.authservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

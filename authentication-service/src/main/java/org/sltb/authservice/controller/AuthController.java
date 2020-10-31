@@ -1,12 +1,12 @@
-package org.sltb.userservice.controller;
+package org.sltb.authservice.controller;
 
 import java.util.List;
 
-import org.sltb.userservice.domain.GrantedAuthority;
-import org.sltb.userservice.domain.UserToken;
-import org.sltb.userservice.service.AuthenticationService;
-import org.sltb.userservice.service.UserDetailsService;
-import org.sltb.userservice.web.WebResponse;
+import org.sltb.authservice.domain.GrantedAuthority;
+import org.sltb.authservice.domain.UserToken;
+import org.sltb.authservice.service.AuthenticationService;
+import org.sltb.authservice.service.UserDetailsService;
+import org.sltb.authservice.web.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

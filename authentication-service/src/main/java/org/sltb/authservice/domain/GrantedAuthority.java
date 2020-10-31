@@ -1,4 +1,4 @@
-package org.sltb.userservice.domain;
+package org.sltb.authservice.domain;
 
 public class GrantedAuthority {
 

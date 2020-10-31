@@ -1,8 +1,8 @@
-package org.sltb.userservice.dao;
+package org.sltb.authservice.dao;
 
 import java.util.List;
 
-import org.sltb.userservice.domain.GrantedAuthority;
+import org.sltb.authservice.domain.GrantedAuthority;
 
 public interface UserDetailsDao {
 	

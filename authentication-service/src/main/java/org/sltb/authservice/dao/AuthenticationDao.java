@@ -1,6 +1,6 @@
-package org.sltb.userservice.dao;
+package org.sltb.authservice.dao;
 
-import org.sltb.userservice.domain.UserToken;
+import org.sltb.authservice.domain.UserToken;
 
 public interface AuthenticationDao {
 

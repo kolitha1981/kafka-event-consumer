@@ -1,11 +1,11 @@
-package org.sltb.userservice.dao;
+package org.sltb.authservice.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.sltb.userservice.domain.GrantedAuthority;
-import org.sltb.userservice.domain.SystemAuthority;
+import org.sltb.authservice.domain.GrantedAuthority;
+import org.sltb.authservice.domain.SystemAuthority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

@@ -1,4 +1,4 @@
-package org.sltb.userservice.domain;
+package org.sltb.authservice.domain;
 
 import java.util.ArrayList;
 import java.util.List;

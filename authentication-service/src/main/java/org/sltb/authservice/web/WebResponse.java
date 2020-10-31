@@ -1,4 +1,4 @@
-package org.sltb.userservice.web;
+package org.sltb.authservice.web;
 
 public class WebResponse {
 

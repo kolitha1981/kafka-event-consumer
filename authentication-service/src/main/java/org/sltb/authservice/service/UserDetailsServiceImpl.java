@@ -1,9 +1,9 @@
-package org.sltb.userservice.service;
+package org.sltb.authservice.service;
 
 import java.util.List;
 
-import org.sltb.userservice.dao.UserDetailsDao;
-import org.sltb.userservice.domain.GrantedAuthority;
+import org.sltb.authservice.dao.UserDetailsDao;
+import org.sltb.authservice.domain.GrantedAuthority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
