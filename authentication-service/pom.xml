@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.sltb</groupId>
-	<artifactId>UserService</artifactId>
+	<artifactId>authentication-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>UserService</name>
+	<name>authentication-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
