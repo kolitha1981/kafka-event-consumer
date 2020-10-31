@@ -1,4 +1,4 @@
-package org.sltb.journeymanagement.domain;
+package org.sltb.transportmanagement.domain;
 
 public enum CardStatus {
 

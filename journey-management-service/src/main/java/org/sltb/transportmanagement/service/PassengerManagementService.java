@@ -1,6 +1,6 @@
-package org.sltb.journeymanagement.service;
+package org.sltb.transportmanagement.service;
 
-public interface MemberShipManagementService {
+public interface PassengerManagementService {
 	
 	boolean canTakeJouney(final long userId);
 	

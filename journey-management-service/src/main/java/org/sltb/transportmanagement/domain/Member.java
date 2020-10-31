@@ -1,4 +1,4 @@
-package org.sltb.journeymanagement.domain;
+package org.sltb.transportmanagement.domain;
 
 import java.math.BigDecimal;
 import java.util.Calendar;

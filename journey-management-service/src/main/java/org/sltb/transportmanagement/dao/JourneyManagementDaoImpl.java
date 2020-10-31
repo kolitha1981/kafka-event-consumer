@@ -1,4 +1,4 @@
-package org.sltb.journeymanagement.dao;
+package org.sltb.transportmanagement.dao;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import org.sltb.journeymanagement.domain.Journey;
-import org.sltb.journeymanagement.domain.JourneyState;
+import org.sltb.transportmanagement.domain.Journey;
+import org.sltb.transportmanagement.domain.JourneyState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -17,7 +17,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class JournayManagementDaoImpl implements JournayManagementDao {
+public class JourneyManagementDaoImpl implements JourneyManagementDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;

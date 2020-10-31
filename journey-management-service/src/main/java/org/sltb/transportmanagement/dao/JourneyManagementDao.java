@@ -1,10 +1,10 @@
-package org.sltb.journeymanagement.dao;
+package org.sltb.transportmanagement.dao;
 
 import java.util.Date;
 
-import org.sltb.journeymanagement.domain.Journey;
+import org.sltb.transportmanagement.domain.Journey;
 
-public interface JournayManagementDao {
+public interface JourneyManagementDao {
 	
 	Journey create(String startingZone, String endingZone, 
 			Long userId, Date startTime);

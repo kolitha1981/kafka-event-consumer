@@ -1,10 +1,10 @@
-package org.sltb.journeymanagement.service;
+package org.sltb.transportmanagement.service;
 
 import java.util.Date;
 
-import org.sltb.journeymanagement.domain.Journey;
+import org.sltb.transportmanagement.domain.Journey;
 
-public interface JournayManagementService {
+public interface JourneyManagementService {
 
 	Journey create(String startingZone, String endingZone, Long userId, Date startTime);
 

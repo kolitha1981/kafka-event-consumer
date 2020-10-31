@@ -1,4 +1,4 @@
-package org.sltb.journeymanagement.service;
+package org.sltb.transportmanagement.service;
 
 public class CardIssuePushNotificationServiceImpl implements CardIssuePushNotificationService {
 

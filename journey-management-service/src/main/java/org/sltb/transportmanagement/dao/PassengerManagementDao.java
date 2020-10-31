@@ -1,8 +1,8 @@
-package org.sltb.journeymanagement.dao;
+package org.sltb.transportmanagement.dao;
 
-import org.sltb.journeymanagement.domain.CardStatus;
+import org.sltb.transportmanagement.domain.CardStatus;
 
-public interface MemberShipManagementDao {
+public interface PassengerManagementDao {
 	
 	Double accountBalanceOf(Long userId);
 	

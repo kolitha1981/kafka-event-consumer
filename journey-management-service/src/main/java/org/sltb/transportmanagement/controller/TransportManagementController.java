@@ -1,8 +1,8 @@
-package org.sltb.journeymanagement.controller;
+package org.sltb.transportmanagement.controller;
 
-import org.sltb.journeymanagement.service.JournayManagementService;
-import org.sltb.journeymanagement.service.MemberShipManagementService;
-import org.sltb.journeymanagement.web.WebResponse;
+import org.sltb.transportmanagement.service.JourneyManagementService;
+import org.sltb.transportmanagement.service.PassengerManagementService;
+import org.sltb.transportmanagement.web.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class JourneyManagementController {
+public class TransportManagementController {
 
 	@Autowired
-	private MemberShipManagementService memberShipManagementService;
+	private PassengerManagementService memberShipManagementService;
 	@Autowired
-	private JournayManagementService journayManagementService;
+	private JourneyManagementService journayManagementService;
 
 	@RequestMapping(method = {
 			RequestMethod.GET }, path = "/members/{userId}/cantravel", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

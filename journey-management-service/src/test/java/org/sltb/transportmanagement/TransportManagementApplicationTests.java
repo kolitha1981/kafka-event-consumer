@@ -1,10 +1,10 @@
-package org.sltb.journeymanagement;
+package org.sltb.transportmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JourneyManagementApplicationTests {
+class TransportManagementApplicationTests {
 
 	@Test
 	void contextLoads() {

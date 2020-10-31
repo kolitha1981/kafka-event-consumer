@@ -1,24 +1,22 @@
-package org.sltb.journeymanagement.service;
+package org.sltb.transportmanagement.service;
 
 import java.util.Calendar;
 import java.util.Date;
 
-
-
-import org.sltb.journeymanagement.dao.JournayManagementDao;
-import org.sltb.journeymanagement.dao.MemberShipManagementDao;
-import org.sltb.journeymanagement.domain.Journey;
+import org.sltb.transportmanagement.dao.JourneyManagementDao;
+import org.sltb.transportmanagement.dao.PassengerManagementDao;
+import org.sltb.transportmanagement.domain.Journey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class JournayManagementServiceImpl implements JournayManagementService {
+public class JourneyManagementServiceImpl implements JourneyManagementService {
 
 	@Autowired
-	private JournayManagementDao journayManagementDao;
+	private JourneyManagementDao journayManagementDao;
 	@Autowired
-	private MemberShipManagementDao memberShipManagementDao;
+	private PassengerManagementDao passengerManagementDao;
 
 	@Transactional
 	public Journey create(String startingZone, String endingZone, Long userId, Date startTime) {
@@ -27,7 +25,7 @@ public class JournayManagementServiceImpl implements JournayManagementService {
 
 	public Double end(final Long journeyId, final Long userId, final String startZone, final String endZone) {
 		return updateBalance(journeyId, userId, journayManagementDao.feeBetween(startZone, endZone),
-				memberShipManagementDao.accountBalanceOf(userId));
+				passengerManagementDao.accountBalanceOf(userId));
 	}
 
 	@Transactional
@@ -36,7 +34,7 @@ public class JournayManagementServiceImpl implements JournayManagementService {
 		if (!journayManagementDao.end(journeyId, travelFee, Calendar.getInstance().getTime()))
 			throw new RuntimeException("Travel fee could not be deducted from account .....");
 		remainingBalanace -= travelFee;
-		if (!memberShipManagementDao.deductFromAccount(userId, remainingBalanace))
+		if (!passengerManagementDao.deductFromAccount(userId, remainingBalanace))
 			throw new RuntimeException("Travel fee could not be deducted from account .....");
 		return remainingBalanace;
 	}
