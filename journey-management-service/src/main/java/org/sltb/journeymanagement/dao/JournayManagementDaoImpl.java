@@ -49,6 +49,7 @@ public class JournayManagementDaoImpl implements JournayManagementDao {
 					public void setValues(PreparedStatement preparedStatement) throws SQLException {
 						preparedStatement.setDate(0, new java.sql.Date(endDateTime.getTime()));
 						preparedStatement.setDouble(1, amount);
+						preparedStatement.setLong(2, journeyId);
 					}
 				}) > 0;
 	}

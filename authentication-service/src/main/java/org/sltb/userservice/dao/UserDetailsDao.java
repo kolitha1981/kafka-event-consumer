@@ -6,8 +6,8 @@ import org.sltb.userservice.domain.GrantedAuthority;
 
 public interface UserDetailsDao {
 	
-	Long getUserIdOf(final String userName);
+	Long getUserIdOf(String userName);
 	
-	List<GrantedAuthority> getGrantedAuthoritiesOf(final Long userId);
+	List<GrantedAuthority> getGrantedAuthoritiesOf(Long userId);	
 
 }

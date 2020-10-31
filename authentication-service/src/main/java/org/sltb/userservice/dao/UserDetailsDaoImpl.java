@@ -19,7 +19,7 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 
 	@Override
 	public Long getUserIdOf(final String userName) {
-		return jdbcTemplate.queryForObject("SELECT USER_ID FROM USER_DETAILS_SERVICE.SYSTEM_USER WHERE USER_NAME=?",
+		return jdbcTemplate.queryForObject("SELECT USER_ID FROM AUTHENTICATION_SERVICE.SYSTEM_USER WHERE USER_NAME=?",
 				new Object[] { userName }, new RowMapper<Long>() {
 					@Override
 					public Long mapRow(ResultSet resultSet, int arg1) throws SQLException {
@@ -31,8 +31,8 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 	@Override
 	public List<GrantedAuthority> getGrantedAuthoritiesOf(final Long userId) {
 		return SystemAuthority.getGrantedAuthrities(jdbcTemplate
-				.queryForObject("SELECT details.AUTH_BIN_VALUE FROM USER_DETAILS_SERVICE.SYSTEM_ROLES roles INNER JOIN "
-						+ "USER_DETAILS_SERVICE.SYSTEM_USER_ROLES userroles  ON userroles.ROLE_ID = roles.ROLE_ID "
+				.queryForObject("SELECT details.AUTH_BIN_VALUE FROM AUTHENTICATION_SERVICE.SYSTEM_ROLES roles INNER JOIN "
+						+ "AUTHENTICATION_SERVICE.SYSTEM_USER_ROLES userroles  ON userroles.ROLE_ID = roles.ROLE_ID "
 						+ "WHERE userroles.USER_ID = ?", new Object[] { Long.valueOf(userId) }, new RowMapper<Long>() {
 							@Override
 							public Long mapRow(ResultSet resultSet, int arg1) throws SQLException {

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.sltb</groupId>
-	<artifactId>JourneyManagement</artifactId>
+	<artifactId>journey-management-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JourneyManagement</name>
+	<name>journey-management-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
