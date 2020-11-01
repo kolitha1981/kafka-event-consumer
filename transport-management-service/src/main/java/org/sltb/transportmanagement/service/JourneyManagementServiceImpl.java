@@ -38,7 +38,7 @@ public class JourneyManagementServiceImpl implements JourneyManagementService {
 		if (!journayManagementDao.end(journeyId, travelFee, Calendar.getInstance().getTime()))
 			throw new RuntimeException("Travel fee could not be deducted from account .....");
 		remainingBalanace -= travelFee;
-		if (!passengerManagementDao.deductFromAccount(userId, remainingBalanace))
+		if (!passengerManagementDao.updateBalanceOf(userId, remainingBalanace))
 			throw new RuntimeException("Travel fee could not be deducted from account .....");
 		return remainingBalanace;
 	}

@@ -50,7 +50,7 @@ public class PassengerManagementServiceImpl implements PassengerManagementServic
 		if (!passengerManagementDao.changeCardStatus(userId, CardStatus.INACTIVE))
 			return false;
 		accountBalance -= cardRenewalFee;
-		return passengerManagementDao.deductFromAccount(userId, accountBalance);
+		return passengerManagementDao.updateBalanceOf(userId, accountBalance);
 	}
 
 }

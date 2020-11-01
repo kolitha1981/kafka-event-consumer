@@ -6,7 +6,7 @@ public interface PassengerManagementDao {
 	
 	Double accountBalanceOf(Long userId);
 	
-	boolean deductFromAccount(Long userid, Double amount);
+	boolean updateBalanceOf(Long userid, Double amount);
 	
 	boolean changeCardStatus(Long userId, CardStatus cardStatus);	
 

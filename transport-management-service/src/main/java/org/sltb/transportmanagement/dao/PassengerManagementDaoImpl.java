@@ -30,14 +30,14 @@ public class PassengerManagementDaoImpl implements PassengerManagementDao {
 	}
 
 	@Override
-	public boolean deductFromAccount(final Long userid, final Double amount) {
+	public boolean updateBalanceOf(final Long userid, final Double amount) {
 		return this.jdbctemplate.update(
 				"UPDATE TRANSPORT_MANAGEMENT.PASSENGER SET AVAILABLE_BALANCE = ? WHERE USER_ID = ?",
 				new PreparedStatementSetter() {
 					@Override
 					public void setValues(PreparedStatement preparedStatement) throws SQLException {
-						preparedStatement.setLong(0, userid);
 						preparedStatement.setDouble(1, amount);
+						preparedStatement.setLong(2, userid);
 					}
 				}) > 0;
 	}
@@ -48,8 +48,8 @@ public class PassengerManagementDaoImpl implements PassengerManagementDao {
 				new PreparedStatementSetter() {
 					@Override
 					public void setValues(PreparedStatement preparedStatement) throws SQLException {
-						preparedStatement.setInt(0, cardStatus.getCardStatus());
-						preparedStatement.setLong(1, userId);
+						preparedStatement.setInt(1, cardStatus.getCardStatus());
+						preparedStatement.setLong(2, userId);
 					}
 				}) > 0;
 	}
