@@ -3,6 +3,7 @@ package org.sltb.transportmanagement.controller;
 import java.util.List;
 
 import org.sltb.transportmanagement.domain.Journey;
+import org.sltb.transportmanagement.exception.InsufficientBalanceException;
 import org.sltb.transportmanagement.service.JourneyManagementService;
 import org.sltb.transportmanagement.service.PassengerManagementService;
 import org.sltb.transportmanagement.web.WebResponse;
@@ -30,6 +31,9 @@ public class TransportManagementController {
 		try {
 			canTakJourney = memberShipManagementService.canTakeJouney(userId);
 
+		}catch(InsufficientBalanceException e) {
+			return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(null)
+					.addResponseStatus(HttpStatus.BAD_REQUEST.value()).addMessage(e.getMessage()).build();
 		} catch (Exception e) {
 			return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(null)
 					.addResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()).addMessage(e.getMessage()).build();
