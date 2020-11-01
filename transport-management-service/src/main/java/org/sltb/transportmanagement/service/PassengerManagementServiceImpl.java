@@ -2,6 +2,7 @@ package org.sltb.transportmanagement.service;
 
 import org.sltb.transportmanagement.dao.PassengerManagementDao;
 import org.sltb.transportmanagement.domain.CardStatus;
+import org.sltb.transportmanagement.exception.InsufficientBalanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,22 @@ public class PassengerManagementServiceImpl implements PassengerManagementServic
 	@Autowired
 	private CardIssuePushNotificationService cardIssuePushNotificationService;
 	@Value("${org.sltb.memebership.minaccountbalancefortravel}")
-	private Double minimumAccountBalanceForTravel;
+	private double minimumAccountBalanceForTravel;
 	@Value("${org.sltb.memebership.cardrenewalFee}")
-	private Double cardRenewalFee;
+	private double cardRenewalFee;
 
 	@Override
 	public boolean canTakeJouney(long userId) {
-		return passengerManagementDao.accountBalanceOf(userId).compareTo(minimumAccountBalanceForTravel) > 0;
+		double accountBalance = passengerManagementDao.accountBalanceOf(userId);
+		if (accountBalance < 0) {
+			throw new InsufficientBalanceException(
+					"You have negative account balanace. " + "Pls recarge your account first.");
+		}
+		if (accountBalance < minimumAccountBalanceForTravel) {
+			throw new InsufficientBalanceException(
+					"You are required to have a minimu balance  before making the request");
+		}
+		return true;
 	}
 
 	@Override

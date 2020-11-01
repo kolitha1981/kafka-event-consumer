@@ -1,10 +1,10 @@
 package org.sltb.transportmanagement.dao;
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import org.sltb.transportmanagement.domain.Journey;
 import org.sltb.transportmanagement.domain.JourneyState;
@@ -64,6 +64,23 @@ public class JourneyManagementDaoImpl implements JourneyManagementDao {
 								return resultSet.getDouble("AMOUNT");
 							}
 						});
+	}
+
+	@Override
+	public List<Journey> historyOf(Long userId, int recordLimit) {
+		return this.jdbcTemplate.query(
+				"SELECT JOURNEY_ID, START_ZONE, END_ZONE, START_TIME, END_TIME, AMOUNT FROM "
+						+ "TRANSPORT_MANAGEMENT.JOURNEY WHERE USER_ID = ? " + "ORDER BY START_TIME DESC LIMIT ?",
+				new Object[] { userId, Integer.valueOf(recordLimit) }, new RowMapper<Journey>() {
+					@Override
+					public Journey mapRow(ResultSet resultSet, int arg1) throws SQLException {
+						final Journey journey = new Journey(resultSet.getLong("JOURNEY_ID"),
+								resultSet.getString("START_ZONE"), resultSet.getString("END_ZONE"), userId,
+								resultSet.getDate("START_TIME"));
+						journey.setEndTime(resultSet.getDate("END_TIME"));
+						return journey;
+					}
+				});
 	}
 
 }

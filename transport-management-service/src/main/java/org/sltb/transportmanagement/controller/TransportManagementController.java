@@ -1,5 +1,8 @@
 package org.sltb.transportmanagement.controller;
 
+import java.util.List;
+
+import org.sltb.transportmanagement.domain.Journey;
 import org.sltb.transportmanagement.service.JourneyManagementService;
 import org.sltb.transportmanagement.service.PassengerManagementService;
 import org.sltb.transportmanagement.web.WebResponse;
@@ -21,7 +24,7 @@ public class TransportManagementController {
 	private JourneyManagementService journayManagementService;
 
 	@RequestMapping(method = {
-			RequestMethod.GET }, path = "/members/{userId}/cantravel", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+			RequestMethod.GET }, path = "/passengers/{userId}/cantravel", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public WebResponse canTakeJouney(@PathVariable("userId") long userId) {
 		boolean canTakJourney;
 		try {
@@ -53,7 +56,7 @@ public class TransportManagementController {
 	}
 
 	@RequestMapping(method = {
-			RequestMethod.POST }, path = "/memberships/cards/{userId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+			RequestMethod.POST }, path = "/passengers/cards/{userId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public WebResponse requestCard(@PathVariable("userId") final Long userId) {
 		Boolean cardRequestCompleted;
 		try {
@@ -64,6 +67,21 @@ public class TransportManagementController {
 					.addResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()).addMessage(e.getMessage()).build();
 		}
 		return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(cardRequestCompleted)
+				.addResponseStatus(HttpStatus.OK.value()).addMessage("").build();
+	}
+
+	@RequestMapping(method = {
+			RequestMethod.GET }, path = "/journeys/{userId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public WebResponse historyOf(@PathVariable("userId") final Long userId) {
+		List<Journey> journeys;
+		try {
+			journeys = journayManagementService.historyOf(userId);
+
+		} catch (Exception e) {
+			return new WebResponse.WebResponseBuilder<List<Journey>>().addResponseData(null)
+					.addResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()).addMessage(e.getMessage()).build();
+		}
+		return new WebResponse.WebResponseBuilder<List<Journey>>().addResponseData(journeys)
 				.addResponseStatus(HttpStatus.OK.value()).addMessage("").build();
 	}
 
