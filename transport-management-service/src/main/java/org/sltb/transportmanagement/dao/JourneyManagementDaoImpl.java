@@ -25,16 +25,16 @@ public class JourneyManagementDaoImpl implements JourneyManagementDao {
 	@Override
 	public Journey create(final String startingZone, final String endingZone, final Long userId, final Date startTime) {
 		String createJourneySQL = "INSERT INTO TRANSPORT_MANAGEMENT.JOURNEY "
-				+ "(START_ZONE,END_ZONE,START_TIME,JOURNEY_STATE,USER_ID) VALUES(?,?,?,?,?,?)";
+				+ "(START_ZONE,END_ZONE,START_TIME,JOURNEY_STATE,USER_ID) VALUES(?,?,?,?,?)";
 		KeyHolder journeyPkHolder = new GeneratedKeyHolder();
 		return this.jdbcTemplate.update(createJourneySQL, new PreparedStatementSetter() {
 			@Override
 			public void setValues(final PreparedStatement preparedStatement) throws SQLException {
-				preparedStatement.setString(0, startingZone);
-				preparedStatement.setString(1, endingZone);
-				preparedStatement.setDate(2, new java.sql.Date(startTime.getTime()));
-				preparedStatement.setInt(3, JourneyState.STARTED.getJourneyState());
-				preparedStatement.setLong(4, userId);
+				preparedStatement.setString(1, startingZone);
+				preparedStatement.setString(2, endingZone);
+				preparedStatement.setDate(3, new java.sql.Date(startTime.getTime()));
+				preparedStatement.setInt(4, JourneyState.STARTED.getJourneyState());
+				preparedStatement.setLong(5, userId);
 			}
 		}, journeyPkHolder) <= 0 ? null
 				: new Journey(journeyPkHolder.getKey().longValue(), startingZone, endingZone, userId, startTime);
