@@ -16,7 +16,6 @@ public class Journey {
 	
 	public Journey(final Long journayId, final String startingZone, final String endingZone, 
 			final Long userId, final Date startTime) {
-		super();
 		this.journayId = journayId;
 		this.startingZone = startingZone;
 		this.endingZone = endingZone;

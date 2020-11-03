@@ -2,16 +2,18 @@ package org.sltb.transportmanagement.controller;
 
 import java.util.List;
 
+import org.sltb.transportmanagement.core.CreateJourneyRequest;
+import org.sltb.transportmanagement.core.WebResponse;
 import org.sltb.transportmanagement.domain.Journey;
 import org.sltb.transportmanagement.exception.InsufficientBalanceException;
 import org.sltb.transportmanagement.service.JourneyManagementService;
 import org.sltb.transportmanagement.service.PassengerManagementService;
-import org.sltb.transportmanagement.web.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,14 +33,30 @@ public class TransportManagementController {
 		try {
 			canTakJourney = memberShipManagementService.canTakeJouney(userId);
 
-		}catch(InsufficientBalanceException e) {
-			return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(null)
+		} catch (InsufficientBalanceException e) {
+			return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(false)
 					.addResponseStatus(HttpStatus.BAD_REQUEST.value()).addMessage(e.getMessage()).build();
 		} catch (Exception e) {
-			return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(null)
+			return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(false)
 					.addResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()).addMessage(e.getMessage()).build();
 		}
 		return new WebResponse.WebResponseBuilder<Boolean>().addResponseData(canTakJourney)
+				.addResponseStatus(HttpStatus.OK.value()).addMessage("").build();
+	}
+
+	@RequestMapping(method = {
+			RequestMethod.POST }, path = "/journeys", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public WebResponse createJourney(@RequestBody CreateJourneyRequest journeyRequest) {
+		Journey createdJourney;
+		try {
+			createdJourney = journayManagementService.create(journeyRequest.getStartingZone(),
+					journeyRequest.getEndingZone(), journeyRequest.getUserId(), journeyRequest.getStartTime());
+
+		} catch (Exception e) {
+			return new WebResponse.WebResponseBuilder<Journey>().addResponseData(null)
+					.addResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.value()).addMessage(e.getMessage()).build();
+		}
+		return new WebResponse.WebResponseBuilder<Journey>().addResponseData(createdJourney)
 				.addResponseStatus(HttpStatus.OK.value()).addMessage("").build();
 	}
 

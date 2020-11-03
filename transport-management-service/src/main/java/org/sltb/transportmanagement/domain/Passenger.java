@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Member {
+public class Passenger {
 
 	private Long membershipId;
 	private Long userId;
@@ -16,7 +16,7 @@ public class Member {
 	private Date memebershipEndDate;
 	private CardStatus cardStatus;
 
-	public Member(Long membershipId, Long userId, String name, String email, Date memebershipEndDate) {
+	public Passenger(Long membershipId, Long userId, String name, String email, Date memebershipEndDate) {
 		this.membershipId = membershipId;
 		this.userId = userId;
 		this.name = name;
@@ -85,7 +85,7 @@ public class Member {
 			return true;
 		if (obj == null || getClass() != obj.getClass())
 			return false;
-		Member other = (Member) obj;
+		Passenger other = (Passenger) obj;
 		if (userId == null) {
 			if (other.userId != null)
 				return false;

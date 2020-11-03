@@ -1,4 +1,4 @@
-package org.sltb.transportmanagement.web;
+package org.sltb.transportmanagement.core;
 
 public class WebResponse {
 
