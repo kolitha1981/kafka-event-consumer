@@ -15,5 +15,7 @@ public interface JourneyManagementDao {
 	Double feeBetween(String startZone, String endZone);
 	
 	List<Journey> historyOf(Long userId, int recordLimit);
+	
+	Journey journeyOf(Long journeyId);
 
 }

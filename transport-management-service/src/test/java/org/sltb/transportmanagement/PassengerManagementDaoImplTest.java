@@ -1,11 +1,9 @@
 package org.sltb.transportmanagement;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.sltb.transportmanagement.dao.PassengerManagementDao;
-import org.sltb.transportmanagement.domain.CardStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +21,7 @@ class PassengerManagementDaoImplTest {
 		assertEquals(passengerManagementDao.accountBalanceOf(Long.valueOf(1)), Double.valueOf(0));
 	}
 	
-	@Test
+	/* @Test
 	public void testUpdateBlanceFromAccount() {
 		assertTrue(passengerManagementDao.updateBalanceOf(Long.valueOf(2), Double.valueOf(60.00)));
 		assertEquals(passengerManagementDao.accountBalanceOf(Long.valueOf(2)), Double.valueOf(60.00));
@@ -32,6 +30,6 @@ class PassengerManagementDaoImplTest {
 	@Test
 	public void changeCardStatusOfUser() {
 		assertTrue(passengerManagementDao.changeCardStatus(Long.valueOf(2), CardStatus.INACTIVE));
-	}
+	}*/
 
 }

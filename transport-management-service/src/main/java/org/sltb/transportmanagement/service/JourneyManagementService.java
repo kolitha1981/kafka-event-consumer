@@ -12,5 +12,7 @@ public interface JourneyManagementService {
 	Double end(Long journeyId, Long userId, String startZone, String endZone);
 	
 	List<Journey> historyOf(Long userId);
+	
+	Journey journeyOf(Long journeyId);
 
 }

@@ -12,6 +12,13 @@ public enum JourneyState {
 
 	public int getJourneyState() {
 		return journeyState;
-	}	
-	
+	}
+
+	public static JourneyState valueOf(int journeyState) {
+		for (JourneyState journeyStateVal : values())
+			if (journeyStateVal.getJourneyState() == journeyState)
+				return journeyStateVal;
+		return null;
+	}
+
 }

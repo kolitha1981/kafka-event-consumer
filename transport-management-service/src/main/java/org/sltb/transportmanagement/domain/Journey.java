@@ -1,16 +1,17 @@
 package org.sltb.transportmanagement.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Journey {
+public class Journey implements Serializable {
 	
 	private Long journayId;
 	private String startingZone;
 	private String endingZone;
 	private Date startTime;
 	private Date endTime;
-	private BigDecimal amount;
+	private Double amount;
 	private JourneyState journeyState;
 	private Long userId;
 	
@@ -24,11 +25,11 @@ public class Journey {
 		this.journeyState = JourneyState.STARTED;
 	}
 
-	public BigDecimal getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 

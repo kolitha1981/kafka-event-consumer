@@ -48,4 +48,9 @@ public class JourneyManagementServiceImpl implements JourneyManagementService {
 		return this.journayManagementDao.historyOf(userId, historyRecordLimit);
 	}
 
+	@Override
+	public Journey journeyOf(Long journeyId) {
+		return this.journayManagementDao.journeyOf(journeyId);
+	}
+
 }
